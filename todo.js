@@ -1,4 +1,5 @@
 const save_btn = document.querySelector(".btn-success");
+const del_btn = document.querySelector(".btn-danger");
 const title_input = document.querySelector("#title");
 const list = document.querySelector(".list");
 
@@ -26,8 +27,16 @@ function renderItem(todo_item) {
   list.appendChild(item);
 
   checkbox.addEventListener("click", () => {
-   toggleStatus(todo_item.title);
+    toggleStatus(todo_item.title);
   });
+  del_btn.addEventListener("click", ()=>{
+    removed_dom = remove();
+    if(removed_dom === todo_item)
+    {
+      list.removeChild(item);
+    }
+  })
+
 }
 
 function clearInput() {
@@ -43,11 +52,9 @@ function renderList() {
   }
 }
 
-
-// work with storage 
+// work with storage
 
 function syncStorag() {
-  
   localStorage.setItem("my_list", JSON.stringify(todo_list));
 }
 
@@ -74,8 +81,7 @@ function onAddItem() {
 
 // Functionality
 
-function toggleStatus(title){
-
+function toggleStatus(title) {
   for (let i = 0; i < todo_list.length; i++) {
     const list_item = todo_list[i];
 
@@ -86,7 +92,7 @@ function toggleStatus(title){
   syncStorag();
 }
 
-function addItem(item){
+function addItem(item) {
   const next_item = {
     title: item.title,
     status: item.status,
@@ -95,12 +101,24 @@ function addItem(item){
   syncStorag();
 }
 
-function remove(){}
+function remove() {
+  for (let i = 0; i < todo_list.length; i++) {
+    const list_item = todo_list[i];
+    if (list_item.status === true) {
+        todo_list.splice(i,1);
+    }
+  }
+  syncStorag();
+  let removed_dom=todo_list;
+  return removed_dom;
+}
 
 //Run your App
 
 function events() {
   save_btn.addEventListener("click", onAddItem);
+  
+   
 }
 
 function checkInput() {
