@@ -1,0 +1,40 @@
+body{
+    text-align: center;
+}
+.container{
+    width: 468px;
+    margin: auto;
+    margin-top: 10rem;
+}
+.form button.btn-success{
+    background-color: #5D9C59;
+    color: white;
+}
+ .form .btn-danger{
+    background-color:#D80032;
+    color: white;
+}
+.form{
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.list{
+    padding: 1rem 0;
+}
+.list .item{
+padding: 0.5rem 0;
+border-bottom: 1px solid #eee;
+}
+.input-group{
+    margin-bottom: 15px;
+}
+button.btn-danger:hover{
+    background-color:#FF8400;
+}
+button.btn-success:hover{
+    background-color: #367E18;
+}
+.btn-danger , .btn-success{
+    margin-bottom: 5px;
+}
