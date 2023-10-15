@@ -4,6 +4,8 @@ const list = document.querySelector(".list");
 
 let todo_list = [];
 
+// work with dom
+
 function renderItem(todo_item) {
   // div class item
   const item = document.createElement("div");
@@ -13,7 +15,7 @@ function renderItem(todo_item) {
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.classList.add("form-check-input");
-  checkbox.checked=todo_item.status;
+  checkbox.checked = todo_item.status;
 
   // span for text
   const span = document.createElement("span");
@@ -22,6 +24,10 @@ function renderItem(todo_item) {
   item.appendChild(checkbox);
   item.appendChild(span);
   list.appendChild(item);
+
+  checkbox.addEventListener("click", () => {
+   toggleStatus(todo_item.title);
+  });
 }
 
 function clearInput() {
@@ -37,12 +43,11 @@ function renderList() {
   }
 }
 
-function syncStorag(item) {
-  const next_item = {
-    title: item.title,
-    status: item.status,
-  };
-  todo_list.push(next_item);
+
+// work with storage 
+
+function syncStorag() {
+  
   localStorage.setItem("my_list", JSON.stringify(todo_list));
 }
 
@@ -57,15 +62,42 @@ function onAddItem() {
   if (val === "") {
     alert("write your todo...");
   } else {
-    const item={
+    const item = {
       title: val,
       status: false,
-    }
-    syncStorag(item);
+    };
+    addItem(item);
     renderItem(item);
     clearInput();
   }
 }
+
+// Functionality
+
+function toggleStatus(title){
+
+  for (let i = 0; i < todo_list.length; i++) {
+    const list_item = todo_list[i];
+
+    if (list_item.title === title) {
+      list_item.status = list_item.status ? false : true;
+    }
+  }
+  syncStorag();
+}
+
+function addItem(item){
+  const next_item = {
+    title: item.title,
+    status: item.status,
+  };
+  todo_list.push(next_item);
+  syncStorag();
+}
+
+function remove(){}
+
+//Run your App
 
 function events() {
   save_btn.addEventListener("click", onAddItem);
