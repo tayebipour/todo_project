@@ -29,14 +29,6 @@ function renderItem(todo_item) {
   checkbox.addEventListener("click", () => {
     toggleStatus(todo_item.title);
   });
-  del_btn.addEventListener("click", ()=>{
-    removed_dom = remove();
-    if(removed_dom === todo_item)
-    {
-      list.removeChild(item);
-    }
-  })
-
 }
 
 function clearInput() {
@@ -46,6 +38,9 @@ function clearInput() {
 }
 
 function renderList() {
+  // remove old item
+  list.innerHTML = "";
+  // new item
   for (let i = 0; i < todo_list.length; i++) {
     const item = todo_list[i];
     renderItem(item);
@@ -74,6 +69,7 @@ function onAddItem() {
       status: false,
     };
     addItem(item);
+    syncStorag();
     renderItem(item);
     clearInput();
   }
@@ -98,27 +94,31 @@ function addItem(item) {
     status: item.status,
   };
   todo_list.push(next_item);
-  syncStorag();
 }
 
-function remove() {
-  for (let i = 0; i < todo_list.length; i++) {
-    const list_item = todo_list[i];
-    if (list_item.status === true) {
-        todo_list.splice(i,1);
+function onRemove() {
+  // for (let i = 0; i < todo_list.length; i++) {
+  //   const list_item = todo_list[i];
+  const newItem = todo_list.filter((item)=>{
+    if (item.status === true) {
+      return false;
+    }else{
+      return true;
     }
-  }
+    
+  });
+    
+    // }
+  todo_list=newItem;
   syncStorag();
-  let removed_dom=todo_list;
-  return removed_dom;
+  renderList();
 }
 
 //Run your App
 
 function events() {
   save_btn.addEventListener("click", onAddItem);
-  
-   
+  del_btn.addEventListener("click", onRemove);
 }
 
 function checkInput() {
