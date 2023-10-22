@@ -114,25 +114,31 @@ function onRemove() {
 
 function onFilter_select(event) {
   if (event.target.value === "done") {
+    loadFromStorage();
     const item_done = todo_list.filter((item) => {
       if (item.status === true) {
         return true;
       }
     });
-    renderItem(item_done);
+    todo_list=item_done;
+    renderList();
   }
   else if (event.target.value === "todo") {
+    loadFromStorage();
     const item_todo = todo_list.filter((item) => {
       if (item.status === false) {
         return true;
       }
     });
-    renderItem(item_todo);
+    todo_list=item_todo;
+    renderList();
   }else if (event.target.value === "all") {
+    loadFromStorage();
     const item_all = todo_list.filter((item) => {
         return true;
     });
-    renderItem(item_all);
+    todo_list=item_all;
+    renderList();
   }
 }
 
