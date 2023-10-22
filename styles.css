@@ -1,40 +1,92 @@
-body{
+body {
+  text-align: center;
+  padding: 5rem;
+}
+.container {
+  width: 468px;
+  margin: auto;
+  margin-top: 10rem;
+  
+}
+.form {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.list {
+  padding: 1rem 0;
+}
+.list .item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+.input-group {
+  margin-bottom: 15px;
+}
+button.btn-outline-danger:hover {
+  background-color: #ff8400;
+}
+button.btn-outline-success:hover {
+  background-color: #0c2701;
+}
+.btn-outline-danger,
+.btn-outline-success {
+  margin-bottom: 5px;
+}
+.img-thumbnail {
+  height: "650";
+  width: "600";
+}
+#left-wall {
+  text-align: left;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #F7F7F7;
+}
+#right-wall {
+  text-align: left;
+  margin: 1rem;
+  padding: 1rem;
+  background-color:#F7F7F7;
+}
+.menu{
+    text-align: left;
+  }
+  #section-title {
+  
+    color: #fff;
+    text-align: left;
+    padding: 0rem 3rem;
+  }
+  #body-section{
+
+  }
+  
+  #section-title.container-fluid{
+    padding: 3% 15% 7%;
+  }
+  .container{
+    margin-top: 2rem;
     text-align: center;
+  }
+
+  /* navbar */
+  .navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
-.container{
-    width: 468px;
-    margin: auto;
-    margin-top: 10rem;
+
+.navbar {
+    padding: 0 0 4.5rem;
 }
-.form button.btn-success{
-    background-color: #5D9C59;
-    color: white;
+
+.nav-item {
+    padding: 0 18px;
 }
- .form .btn-danger{
-    background-color:#D80032;
-    color: white;
+
+.nav-link {
+    font-size: 1.5rem;
+    text-align: left;
 }
-.form{
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-}
-.list{
-    padding: 1rem 0;
-}
-.list .item{
-padding: 0.5rem 0;
-border-bottom: 1px solid #eee;
-}
-.input-group{
-    margin-bottom: 15px;
-}
-button.btn-danger:hover{
-    background-color:#FF8400;
-}
-button.btn-success:hover{
-    background-color: #367E18;
-}
-.btn-danger , .btn-success{
-    margin-bottom: 5px;
-}
+  

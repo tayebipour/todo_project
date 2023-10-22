@@ -1,7 +1,9 @@
-const save_btn = document.querySelector(".btn-success");
-const del_btn = document.querySelector(".btn-danger");
+const save_btn = document.querySelector(".btn-outline-success");
+const del_btn = document.querySelector(".btn-outline-danger");
 const title_input = document.querySelector("#title");
 const list = document.querySelector(".list");
+const select = document.getElementById("filter");
+const event_select = select.options[select.selectedIndex].value;
 
 let todo_list = [];
 
@@ -34,7 +36,7 @@ function renderItem(todo_item) {
 function clearInput() {
   title_input.value = "";
   save_btn.classList.remove("btn-dark");
-  save_btn.classList.add("btn-success");
+  save_btn.classList.add("btn-outline-success");
 }
 
 function renderList() {
@@ -63,16 +65,16 @@ function onAddItem() {
 
   if (val === "") {
     alert("write your todo...");
-  } else {
-    const item = {
-      title: val,
-      status: false,
-    };
-    addItem(item);
-    syncStorag();
-    renderItem(item);
-    clearInput();
+    return;
   }
+  const item = {
+    title: val,
+    status: false,
+  };
+  addItem(item);
+  syncStorag();
+  renderItem(item);
+  clearInput();
 }
 
 // Functionality
@@ -97,21 +99,41 @@ function addItem(item) {
 }
 
 function onRemove() {
-  // for (let i = 0; i < todo_list.length; i++) {
-  //   const list_item = todo_list[i];
-  const newItem = todo_list.filter((item)=>{
+  const newItem = todo_list.filter((item) => {
     if (item.status === true) {
       return false;
-    }else{
+    } else {
       return true;
     }
-    
   });
-    
-    // }
-  todo_list=newItem;
+
+  todo_list = newItem;
   syncStorag();
   renderList();
+}
+
+function onFilter_select(event) {
+  if (event.target.value === "done") {
+    const item_done = todo_list.filter((item) => {
+      if (item.status === true) {
+        return true;
+      }
+    });
+    renderItem(item_done);
+  }
+  else if (event.target.value === "todo") {
+    const item_todo = todo_list.filter((item) => {
+      if (item.status === false) {
+        return true;
+      }
+    });
+    renderItem(item_todo);
+  }else if (event.target.value === "all") {
+    const item_all = todo_list.filter((item) => {
+        return true;
+    });
+    renderItem(item_all);
+  }
 }
 
 //Run your App
@@ -119,15 +141,18 @@ function onRemove() {
 function events() {
   save_btn.addEventListener("click", onAddItem);
   del_btn.addEventListener("click", onRemove);
+  select.addEventListener("click", (event) => {
+    onFilter_select(event);
+  });
 }
 
 function checkInput() {
   title_input.addEventListener("keydown", () => {
-    save_btn.classList.remove("btn-success");
+    save_btn.classList.remove("btn-outline-success");
     save_btn.classList.add("btn-dark");
     if (title_input.value === "") {
       save_btn.classList.remove("btn-dark");
-      save_btn.classList.add("btn-success");
+      save_btn.classList.add("btn-outline-success");
     }
   });
 }

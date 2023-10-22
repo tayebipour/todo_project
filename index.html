@@ -18,43 +18,89 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <!-- fontawesome.com -->
+
+    <script
+      src="https://kit.fontawesome.com/b0265a92d1.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div class="container">
-      <div class="form">
-        <!-- input text -->
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">Write You todo...</span>
+    
+    <!-- MENU -->
+    <section id="section-title">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary menu">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">MSI</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
           </div>
-          <input type="text" class="form-control" id="title" />
         </div>
-        <!-- button save & button delete -->
-
+      </nav>
+      </section>
+      <!-- wall -->
+      <section id="body-section">
+    <div class="container">
+      <div class="row">
         
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Status: Open this select menu</option>
-          <option value="done">Done</option>
-          <option value="todo">Todo</option>
-          <option value="all">All</option>
-        </select>
-        <br />
-        <button class="btn btn-success">Save</button>
-        <button class="btn btn-danger">Delete</button>
-      </div>
-
-      <div class="list">
-        <!-- <div class="item form-check form-switch">
-          <input type="checkbox" class="form-check-input"/>
-          <span>Item 1</span>
+        <div class="col-sm" id="left-wall">
+          <div class="form">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="">Write You todo...</span>
+              </div>
+              <input type="text" class="form-control" id="title" />
+            </div>
+            <!-- button save & button delete -->
+    
+            <select id="filter" class="form-select" aria-label="Default select example">
+              <option selected disabled="">Status: Open this select menu</option>
+              <option value="done">Done</option>
+              <option value="todo">Todo</option>
+              <option value="all">All</option>
+            </select>
+            <br />
+            <button class="btn btn-outline-success btn-sm">Save</button>
+            <button class="btn btn-outline-danger btn-sm">Delete</button>
+          </div>
+    
+          <div class="list">
+            <!-- <div class="item form-check form-switch">
+              <input type="checkbox" class="form-check-input"/>
+              <span>Item 1</span>
+            </div>
+    
+            <div class="item form-check form-switch">
+              <input type="checkbox" class="form-check-input"/>
+              <span>Item 2</span>
+            </div> -->
+          </div>
+         
         </div>
 
-        <div class="item form-check form-switch">
-          <input type="checkbox" class="form-check-input"/>
-          <span>Item 2</span>
-        </div> -->
+        <div class="col-sm" id="right-wall">
+          <img class="img-thumbnail" src="./image/img.jpg">
       </div>
-    </div>
+        </div>
+      </section>      
+      <footer class="blockquote-footer">Copy & Right <cite title="Source Title">2023</cite></footer>  
     <script type="text/javascript" src="./todo.js"></script>
   </body>
 </html>
