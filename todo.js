@@ -3,7 +3,13 @@ const del_btn = document.querySelector(".btn-outline-danger");
 const title_input = document.querySelector("#title");
 const list = document.querySelector(".list");
 const select = document.getElementById("filter");
-const event_select = select.options[select.selectedIndex].value;
+
+const search_input = document.querySelector(".form-control");
+const search_btn = document.querySelector(".btn-outline-dark");
+
+const todo_from = document.querySelector("#todo-from")
+
+
 
 let todo_list = [];
 
@@ -120,36 +126,59 @@ function onFilter_select(event) {
         return true;
       }
     });
-    todo_list=item_done;
+    todo_list = item_done;
     renderList();
-  }
-  else if (event.target.value === "todo") {
+  } else if (event.target.value === "todo") {
     loadFromStorage();
     const item_todo = todo_list.filter((item) => {
       if (item.status === false) {
         return true;
       }
     });
-    todo_list=item_todo;
+    todo_list = item_todo;
     renderList();
-  }else if (event.target.value === "all") {
+  } else if (event.target.value === "all") {
     loadFromStorage();
     const item_all = todo_list.filter((item) => {
-        return true;
+      return true;
     });
-    todo_list=item_all;
+    todo_list = item_all;
     renderList();
   }
+}
+
+function onSearch() {
+  const val_search = search_input.value;
+  if (!val_search) {
+    alert("Write your title!");
+  }
+  loadFromStorage();
+  const search_item = todo_list.filter((item) => {
+    if (item.title === val_search) {
+      return true;
+    }
+  });
+  todo_list = search_item;
+  renderList();
 }
 
 //Run your App
 
 function events() {
-  save_btn.addEventListener("click", onAddItem);
   del_btn.addEventListener("click", onRemove);
-  select.addEventListener("click", (event) => {
-    onFilter_select(event);
+  select.addEventListener("click", (e) => {
+    onFilter_select(e);
   });
+
+  search_btn.addEventListener("click",(e)=>{
+    e.preventDefault();
+    onSearch();
+  });
+  
+  todo_from.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    onAddItem();
+  })
 }
 
 function checkInput() {

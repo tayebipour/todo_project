@@ -31,7 +31,7 @@
     <section id="section-title">
       <nav class="navbar navbar-expand-lg bg-body-tertiary menu">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">MSI</a>
+          <a class="navbar-brand" href="#">toDo</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -44,13 +44,14 @@
                 <a class="nav-link" href="#">Link</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Disabled</a>
+                <a class="nav-link" href="#">Ref</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <input name="q" class="form-control me-2" type="Search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
+            
           </div>
         </div>
       </nav>
@@ -66,9 +67,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="">Write You todo...</span>
               </div>
+
+              <form id="todo-from">
               <input type="text" class="form-control" id="title" />
             </div>
             <!-- button save & button delete -->
+
+            
     
             <select id="filter" class="form-select" aria-label="Default select example">
               <option selected disabled="">Status: Open this select menu</option>
@@ -77,10 +82,11 @@
               <option value="all">All</option>
             </select>
             <br />
-            <button class="btn btn-outline-success btn-sm">Save</button>
-            <button class="btn btn-outline-danger btn-sm">Delete</button>
+            <button  type="submit" class="btn btn-outline-success btn-sm">Save</button>
+            <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+          </form>
           </div>
-    
+        
           <div class="list">
             <!-- <div class="item form-check form-switch">
               <input type="checkbox" class="form-check-input"/>
@@ -99,8 +105,9 @@
           <img class="img-thumbnail" src="./image/img.jpg">
       </div>
         </div>
-      </section>      
+      </section>    
       <footer class="blockquote-footer">Copy & Right <cite title="Source Title">2023</cite></footer>  
+      
     <script type="text/javascript" src="./todo.js"></script>
   </body>
 </html>
