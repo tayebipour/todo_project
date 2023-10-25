@@ -7,9 +7,7 @@ const select = document.getElementById("filter");
 const search_input = document.querySelector(".form-control");
 const search_btn = document.querySelector(".btn-outline-dark");
 
-const todo_from = document.querySelector("#todo-from")
-
-
+const todo_from = document.querySelector("#todo-from");
 
 let todo_list = [];
 
@@ -112,7 +110,6 @@ function onRemove() {
       return true;
     }
   });
-
   todo_list = newItem;
   syncStorag();
   renderList();
@@ -170,17 +167,33 @@ function events() {
     onFilter_select(e);
   });
 
-  search_btn.addEventListener("click",(e)=>{
+  search_btn.addEventListener("click", (e) => {
     e.preventDefault();
     onSearch();
   });
-  
-  todo_from.addEventListener("submit",(e)=>{
+
+  todo_from.addEventListener("submit", (e) => {
     e.preventDefault();
     onAddItem();
-  })
+  });
+  /////////////////////////////////////////////////////////////////////////////
+  const todos_list_api = "https://jsonplaceholder.typicode.com/todos";
+  const todo_list_server = fetch(todos_list_api)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      data.forEach((item) => {
+        const data_list = {
+          title: item.title,
+          status: item.completed,
+        };
+        renderItem(data_list);
+      });
+    })
+    .catch((err) => alert("cannot load api"));
 }
-
+//////////////////////////////////////////////////////////////////////////////////
 function checkInput() {
   title_input.addEventListener("keydown", () => {
     save_btn.classList.remove("btn-outline-success");
