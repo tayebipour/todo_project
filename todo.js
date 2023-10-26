@@ -188,7 +188,11 @@ function events() {
           title: item.title,
           status: item.completed,
         };
+        // renderItem(data_list);
+        addItem(data_list);
+        syncStorag();
         renderItem(data_list);
+        
       });
     })
     .catch((err) => alert("cannot load api"));
