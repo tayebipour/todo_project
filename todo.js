@@ -159,6 +159,26 @@ function onSearch() {
   renderList();
 }
 
+function fetch_server() {
+  const todos_list_api = "https://jsonplaceholder.typicode.com/todos";
+  const todo_list_server = fetch(todos_list_api)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      data.forEach((item) => {
+        const data_list = {
+          title: item.title,
+          status: item.completed,
+        };
+        addItem(data_list);
+        syncStorag();
+        renderItem(data_list);
+      });
+    })
+    .catch((err) => alert("cannot load api"));
+}
+
 //Run your App
 
 function events() {
@@ -176,28 +196,9 @@ function events() {
     e.preventDefault();
     onAddItem();
   });
-  /////////////////////////////////////////////////////////////////////////////
-  const todos_list_api = "https://jsonplaceholder.typicode.com/todos";
-  const todo_list_server = fetch(todos_list_api)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      data.forEach((item) => {
-        const data_list = {
-          title: item.title,
-          status: item.completed,
-        };
-        // renderItem(data_list);
-        addItem(data_list);
-        syncStorag();
-        renderItem(data_list);
-        
-      });
-    })
-    .catch((err) => alert("cannot load api"));
+ fetch_server();
 }
-//////////////////////////////////////////////////////////////////////////////////
+
 function checkInput() {
   title_input.addEventListener("keydown", () => {
     save_btn.classList.remove("btn-outline-success");
