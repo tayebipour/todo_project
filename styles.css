@@ -89,3 +89,18 @@ button.btn-outline-success:hover {
     font-size: 1.5rem;
     text-align: left;
 }
+.container_circlye
+{
+  height:50px;
+  width:50px;
+  background-color:gray;
+  clip-path: circle(50% at 0 0);
+  text-color:white;
+  transition: all 2s ease;
+}
+.container_circlye:hover{
+  clip-path: circle(50% at 35.5rem 0.5rem);
+ 
+}
+
+
