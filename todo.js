@@ -1,6 +1,5 @@
 import{loadFromStorage } from "./storage.js";
 import{ renderList, checkInput } from "./dom.js";
-import { fetch_server } from "./onServer.js";
 import { fetch_server } from "./api/todos.js";
 import {onAddItem , onFilter_select,onSearch ,onRemove } from "./events.js";
 
